@@ -2,10 +2,20 @@ package com.e.heroes.model;
 
 public class Heroes {
 
+    private String _id;
     private String name;
     private String description;
 
-    public Heroes(String name, String description) {
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
+    }
+
+    public Heroes(String _id, String name, String description) {
+        this._id = _id;
         this.name = name;
         this.description = description;
     }

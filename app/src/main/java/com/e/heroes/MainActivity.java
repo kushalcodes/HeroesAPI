@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     alert("Code: "+response.code());
                 }
                 alert("Added Okay :)");
+                clearField();
 
             }
 
@@ -85,5 +86,10 @@ public class MainActivity extends AppCompatActivity {
     private void alert(String msg){
         Toast.makeText(MainActivity.this,msg,Toast.LENGTH_SHORT).show();
         return;
+    }
+
+    private void clearField(){
+        heroName.setText("");
+        heroDescription.setText("");
     }
 }
