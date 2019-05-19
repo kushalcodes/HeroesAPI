@@ -1,6 +1,8 @@
 package com.e.heroes;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 import com.e.heroes.api.HeroesApi;
 import com.e.heroes.url.Url;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -105,11 +109,11 @@ public class MainActivity extends AppCompatActivity {
     private void clearField(){
         heroName.setText("");
         heroDescription.setText("");
+        theImage.setBackgroundResource(R.drawable.choose);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
 
         switch(requestCode){
 
