@@ -1,5 +1,7 @@
 package com.e.heroes;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView theImage;
     Button btnSave;
     EditText heroName, heroDescription;
+    String selectedImagePath = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,20 @@ public class MainActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if ( selectedImagePath == null ){
+                    alert("Please choose an image to save.");
+                    return;
+                }
                 Save();
+            }
+        });
+
+        theImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("*/*");
+                startActivityForResult(intent, 7);
             }
         });
 
@@ -53,12 +69,10 @@ public class MainActivity extends AppCompatActivity {
         Map<String,Object> map = new HashMap<>();
         map.put("name",name);
         map.put("desc",desc);
+        map.put("image",selectedImagePath);
 
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Url.BASE_URl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        Retrofit retrofit = Url.getRetrofitInstance();
 
         HeroesApi heroesApi = retrofit.create(HeroesApi.class);
 
@@ -91,5 +105,25 @@ public class MainActivity extends AppCompatActivity {
     private void clearField(){
         heroName.setText("");
         heroDescription.setText("");
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
+
+        switch(requestCode){
+
+            case 7:
+
+                if(resultCode==RESULT_OK){
+
+                    Uri selectedImageUri = data.getData();
+                    theImage.setImageURI(selectedImageUri);
+                    selectedImagePath = data.getDataString();
+
+                }
+                break;
+
+        }
     }
 }

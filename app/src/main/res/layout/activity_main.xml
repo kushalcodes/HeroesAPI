@@ -10,8 +10,9 @@
     <ImageView
         android:id="@+id/theImage"
         android:hint="Hero Name..."
+        android:src="@drawable/choose"
         android:layout_width="match_parent"
-        android:layout_height="400dp" />
+        android:layout_height="200dp" />
 
     <EditText
         android:id="@+id/heroName"
