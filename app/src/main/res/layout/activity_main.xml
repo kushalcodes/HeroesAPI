@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/theImage"
-        android:hint="Hero Name..."
-        android:src="@drawable/choose"
-        android:layout_width="400dp"
-        android:layout_gravity="center"
-        android:layout_height="400dp" />
-
-    <EditText
-        android:id="@+id/heroName"
-        android:layout_margin="20dp"
-        android:hint="Hero Name..."
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/heroDesc"
-        android:layout_margin="20dp"
-        android:hint="Hero description..."
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/theImage"
+            android:hint="Hero Name..."
+            android:src="@drawable/choose"
+            android:layout_width="400dp"
+            android:layout_gravity="center"
+            android:layout_height="400dp" />
 
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_gravity="center"
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/heroName"
+            android:layout_margin="20dp"
+            android:hint="Hero Name..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/heroDesc"
+            android:layout_margin="20dp"
+            android:hint="Hero description..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_gravity="center"
+            android:text="Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</ScrollView>
