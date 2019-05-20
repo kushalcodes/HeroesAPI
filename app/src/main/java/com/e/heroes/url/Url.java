@@ -1,6 +1,7 @@
 package com.e.heroes.url;
 
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Url {
 
@@ -9,6 +10,7 @@ public class Url {
     public static Retrofit getRetrofitInstance(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URl)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         return retrofit;

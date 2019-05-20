@@ -24,7 +24,7 @@ public interface HeroesApi {
 
     @FormUrlEncoded
     @POST("heroes")
-    Call<Void> addHero(@Field("name") String name,@Field("desc") String description);
+    Call<Void> addHero(@Field("name") String name,@Field("desc") String description,@Field("image") String imageName);
 
     @FormUrlEncoded
     @POST("heroes")

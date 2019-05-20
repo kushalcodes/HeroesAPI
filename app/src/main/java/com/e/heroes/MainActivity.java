@@ -119,15 +119,14 @@ public class MainActivity extends AppCompatActivity {
         SaveImageOnly();
         String name = heroName.getText().toString();
         String desc = heroDescription.getText().toString();
-
-        Map<String,String> map = new HashMap<>();
-        map.put("name",name);
-        map.put("desc",desc);
-        map.put("image",imageName);
+//
+//        Map<String,String> map = new HashMap<>();
+//        map.put("name",name);
+//        map.put("desc",desc);
+//        map.put("image",imageName);
 
         HeroesApi heroesApi = Url.getRetrofitInstance().create(HeroesApi.class);
-
-        Call<Void> heroCall = heroesApi.addHero(map);
+        Call<Void> heroCall = heroesApi.addHero(name,desc,imageName);
 
         heroCall.enqueue(new Callback<Void>() {
             @Override
@@ -142,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                alert("Error");
+                alert("Herocall failure");
             }
         });
 
@@ -153,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"),file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("imageFile",file.getName(),requestBody);
-
 
         HeroesApi heroesApi = Url.getRetrofitInstance().create(HeroesApi.class);
         Call<ImageResponse> imageResponseCall = heroesApi.uploadImage(body);
@@ -166,7 +164,8 @@ public class MainActivity extends AppCompatActivity {
             imageName = imageResponseResponse.body().getFileName();
 
         }catch (Exception e){
-            alert("Error" );
+            alert("Error Save Image Only");
+            e.printStackTrace();
         }
 
     }
